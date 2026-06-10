@@ -1,0 +1,235 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * XOYAM — Afro Women Workshops
+ * Charte graphique : magenta, violet profond, rouge cramoisi.
+ * Inspiration éditoriale africaine premium, mobile-first.
+ */
+
+@layer base {
+  @font-face {
+    font-family: "Fraunces";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/fraunces/v37/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Fraunces";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/fraunces/v37/6NUu8FyLNQOQZAnv9ZwPxjCQOcz7Fl9q9DhV.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/manrope/v19/xn7gYHE41ni1AdIRggexSg.woff2") format("woff2");
+  }
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-magenta: var(--magenta);
+  --color-violet-deep: var(--violet-deep);
+  --color-crimson: var(--crimson);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* XOYAM brand palette */
+  --magenta: oklch(0.56 0.24 350);          /* magenta vif */
+  --violet-deep: oklch(0.26 0.12 305);      /* violet profond */
+  --crimson: oklch(0.45 0.21 18);           /* rouge cramoisi */
+  --cream: oklch(0.97 0.018 70);            /* crème chaude */
+  --ink: oklch(0.16 0.04 320);              /* encre violacée */
+  --gold: oklch(0.82 0.13 80);              /* or doux */
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+
+  --card: oklch(0.995 0.008 70);
+  --card-foreground: var(--ink);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+
+  --primary: var(--violet-deep);
+  --primary-foreground: var(--cream);
+
+  --secondary: oklch(0.93 0.03 340);
+  --secondary-foreground: var(--violet-deep);
+
+  --muted: oklch(0.94 0.015 60);
+  --muted-foreground: oklch(0.42 0.04 320);
+
+  --accent: var(--magenta);
+  --accent-foreground: var(--cream);
+
+  --destructive: var(--crimson);
+  --destructive-foreground: var(--cream);
+
+  --border: oklch(0.88 0.02 340);
+  --input: oklch(0.92 0.015 340);
+  --ring: var(--magenta);
+
+  /* Signature gradients & shadows */
+  --gradient-brand: linear-gradient(135deg, var(--violet-deep) 0%, var(--magenta) 55%, var(--crimson) 100%);
+  --gradient-warm: linear-gradient(180deg, var(--cream) 0%, oklch(0.93 0.04 30) 100%);
+  --gradient-aurora: radial-gradient(60% 80% at 20% 10%, oklch(0.56 0.24 350 / 0.35), transparent 60%),
+                     radial-gradient(50% 70% at 90% 30%, oklch(0.45 0.21 18 / 0.30), transparent 65%),
+                     radial-gradient(70% 90% at 50% 100%, oklch(0.26 0.12 305 / 0.40), transparent 60%);
+
+  --shadow-soft: 0 1px 2px oklch(0.16 0.04 320 / 0.05), 0 8px 24px oklch(0.16 0.04 320 / 0.08);
+  --shadow-elegant: 0 30px 60px -20px oklch(0.26 0.12 305 / 0.35);
+  --shadow-glow: 0 0 0 1px oklch(0.56 0.24 350 / 0.25), 0 20px 50px -10px oklch(0.56 0.24 350 / 0.35);
+
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+  --background: oklch(0.12 0.04 320);
+  --foreground: var(--cream);
+  --card: oklch(0.18 0.06 315);
+  --card-foreground: var(--cream);
+  --popover: oklch(0.18 0.06 315);
+  --popover-foreground: var(--cream);
+  --primary: var(--magenta);
+  --primary-foreground: var(--cream);
+  --secondary: oklch(0.22 0.07 315);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.22 0.05 315);
+  --muted-foreground: oklch(0.74 0.03 320);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --border: oklch(1 0 0 / 0.10);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: var(--magenta);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-feature-settings: "ss01";
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--magenta);
+    color: var(--cream);
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-sans-brand { font-family: var(--font-sans); }
+
+  .bg-gradient-brand { background-image: var(--gradient-brand); }
+  .bg-gradient-warm { background-image: var(--gradient-warm); }
+  .bg-aurora { background-image: var(--gradient-aurora); }
+
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
+
+  .pattern-grain {
+    background-image:
+      radial-gradient(oklch(0.16 0.04 320 / 0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .pattern-bogolan {
+    --c: var(--violet-deep);
+    background-color: transparent;
+    background-image:
+      linear-gradient(45deg, color-mix(in oklab, var(--c) 12%, transparent) 25%, transparent 25%),
+      linear-gradient(-45deg, color-mix(in oklab, var(--c) 12%, transparent) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, color-mix(in oklab, var(--c) 12%, transparent) 75%),
+      linear-gradient(-45deg, transparent 75%, color-mix(in oklab, var(--c) 12%, transparent) 75%);
+    background-size: 22px 22px;
+    background-position: 0 0, 0 11px, 11px -11px, -11px 0;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(2deg); }
+  }
+  .animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee { animation: marquee 40s linear infinite; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { animation: fade-up 0.9s var(--transition-smooth) both; }
+}
